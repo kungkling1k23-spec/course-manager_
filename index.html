@@ -219,13 +219,10 @@
                     <i class="fa-solid fa-folder-open"></i>
                 </div>
                 <h4 class="text-base font-bold text-slate-700">ไม่พบรายวิชาในระบบ</h4>
-                <p id="emptyStateDesc" class="text-xs text-slate-400 max-w-sm mt-1">เริ่มต้นเพิ่มรายวิชาแรกของคุณ หรือโหลดข้อมูลตัวอย่างเพื่อทดลองใช้งานทันที</p>
-                <div class="mt-5 flex gap-3">
+                <p id="emptyStateDesc" class="text-xs text-slate-400 max-w-sm mt-1">เริ่มต้นเพิ่มรายวิชาแรกของคุณ</p>
+                <div class="mt-5 flex gap-3 justify-center">
                     <button onclick="openAddModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-4 py-2 rounded-xl text-xs sm:text-sm transition shadow-md shadow-indigo-500/20">
                         เพิ่มรายวิชาใหม่
-                    </button>
-                    <button onclick="loadSampleData()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-4 py-2 rounded-xl text-xs sm:text-sm transition">
-                        โหลดข้อมูลตัวอย่าง
                     </button>
                 </div>
             </div>
@@ -803,7 +800,7 @@
                 return;
             }
 
-            document.getElementById('emptyStateDesc').innerText = 'เริ่มต้นเพิ่มรายวิชาแรกของคุณ หรือโหลดข้อมูลตัวอย่างเพื่อทดลองใช้งานทันที';
+            document.getElementById('emptyStateDesc').innerText = 'เริ่มต้นเพิ่มรายวิชาแรกของคุณ';
             const listToRender = filteredList !== null ? filteredList : getFilteredCourses();
 
             document.getElementById('courseCountBadge').innerText = `${listToRender.length} วิชา`;
@@ -967,19 +964,6 @@
             document.getElementById('statTotalHours').innerText = totalHours;
             document.getElementById('statThaiMOOC').innerText = countThaiMOOC;
             document.getElementById('statChulaMOOC').innerText = countChulaMOOC;
-        }
-
-        function loadSampleData() {
-            if (!currentUser) {
-                openLoginModal();
-                showToast('กรุณาเข้าสู่ระบบก่อนโหลดข้อมูลตัวอย่าง', 'error');
-                return;
-            }
-            courses = [...sampleCourses];
-            saveToLocalStorage();
-            renderCourses();
-            updateStats();
-            showToast('โหลดข้อมูลตัวอย่างสำเร็จ');
         }
 
         // Export/Import JSON Data

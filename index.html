@@ -488,7 +488,24 @@
         function saveCoursesToStorage() {
             localStorage.setItem('course_manager_v9', JSON.stringify(courses));
         }
+async function loadCourses() {
+    try {
+        const response = await fetch('./courses.json');
+        if (!response.ok) {
+            throw new Error('ไม่สามารถดึงไฟล์ courses.json ได้');
+        }
+        const data = await response.json();
+        courses = data.course || data;
+    } catch (error) {
+        console.warn('เกิดข้อผิดพลาดในการโหลดวิชา:', error);
+        courses = [];
+    } finally {
+        if (typeof renderTable === 'function') renderTable();
+        if (typeof updateDashboard === 'function') updateDashboard();
+    }
+}
 
+window.addEventListener('DOMContentLoaded', loadCourses);
         // --- RENDER FUNCTIONS ---
         function renderTable() {
             const tbody = document.getElementById('course-table-body');

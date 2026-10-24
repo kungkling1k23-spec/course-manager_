@@ -484,7 +484,7 @@
         }
 async function loadCourses() {
     try {
-        const response = await fetch('file://courses.json');
+        const response = await fetch('./courses.json')
         if (!response.ok) {
             throw new Error('ไม่สามารถโหลดไฟล์ courses.json ได้');
         }
@@ -500,7 +500,7 @@ async function loadCourses() {
     }
 }
 
-window.addEventListener('DOMContentLoaded', loadCourses);
+// window.addEventListener('DOMContentLoaded', loadCourses);
         function showAppDashboard() {
             document.getElementById('authButtons').classList.add('hidden');
             document.getElementById('userProfileSection').classList.remove('hidden');

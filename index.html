@@ -427,41 +427,7 @@
         let courses = [];
         let currentCategoryFilter = 'all';
         let currentPlatformFilter = 'all';
-
-        // Sample Data for new accounts or demo
-        const sampleCourses = [
-            {
-                id: 'course-1',
-                code: 'CS101',
-                name: 'Introduction to Computer Science',
-                credits: 3,
-                category: 'หมวดวิชาแกน',
-                institution: 'ThaiMOOC',
-                hours: 45,
-                description: 'แนวคิดพื้นฐานเกี่ยวกับวิทยาการคอมพิวเตอร์ อัลกอรึทึม และการแก้ปัญหาเบื้องต้น'
-            },
-            {
-                id: 'course-2',
-                code: 'GEN201',
-                name: 'Modern Thai Society and Culture',
-                credits: 2,
-                category: 'หมวดวิชาศึกษาทั่วไป',
-                institution: 'ChulaMOOC',
-                hours: 30,
-                description: 'ศึกษาบริบททางสังคมและวัฒนธรรมไทยร่วมสมัยและการปรับตัวในยุคดิจิทัล'
-            },
-            {
-                id: 'course-3',
-                code: 'ART102',
-                name: 'Creative Design and Thinking',
-                credits: 3,
-                category: 'หมวดวิชาเลือก',
-                institution: 'ThaiMOOC',
-                hours: 45,
-                description: 'กระบวนการคิดเชิงออกแบบและการสร้างสรรค์ผลงานศิลปะร่วมสมัย'
-            }
-        ];
-
+        
         // Initialize on Load
         window.addEventListener('DOMContentLoaded', () => {
             checkUserSession();
@@ -482,7 +448,24 @@
                 showAuthButtons();
             }
         }
+async function loadCourses() {
+    try {
+        const response = await fetch('./courses.json.json');
+        if (!response.ok) {
+            throw new Error('ไม่สามารถดึงไฟล์ courses.json ได้');
+        }
+        const data = await response.json();
+        courses = data.course || data;
+    } catch (error) {
+        console.warn('เกิดข้อผิดพลาดในการโหลดวิชา:', error);
+        courses = [];
+    } finally {
+        if (typeof renderTable === 'function') renderTable();
+        if (typeof updateDashboard === 'function') updateDashboard();
+    }
+}
 
+window.addEventListener('DOMContentLoaded', loadCourses);
         function showAppDashboard() {
             document.getElementById('authButtons').classList.add('hidden');
             document.getElementById('userProfileSection').classList.remove('hidden');

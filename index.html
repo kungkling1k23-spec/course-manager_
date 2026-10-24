@@ -482,25 +482,6 @@
                 showAuthButtons();
             }
         }
-
-        async function loadCourses() {
-            try {
-                const response = await fetch('./courses.json'); // เติม ./ ด้านหน้าเพื่อให้หาไฟล์เจอในโฟลเดอร์เดียวกัน
-                if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-        }
-                const data = await response.json();
-                    courses = data.course || data; // รองรับทั้งแบบมีคีย์ course หรือเป็น Array ตรงๆ
-        
-                if (typeof renderTable === 'function') renderTable();
-                if (typeof updateDashboard === 'function') updateDashboard();
-        }     catch (error) {
-                    console.error('ไม่สามารถโหลดข้อมูลรายวิชาได้:', error);
-                    courses = []; // กำหนดเป็นค่าว่างไว้ก่อน เพื่อให้ปุ่มล็อกอินและระบบอื่นๆ ทำงานต่อได้ปกติ
-    }
-}
-
-        window.addEventListener('DOMContentLoaded', loadCourses);
         
         function showAppDashboard() {
             document.getElementById('authButtons').classList.add('hidden');

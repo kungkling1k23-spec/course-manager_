@@ -455,7 +455,16 @@ async function loadCourses() {
             throw new Error('ไม่สามารถดึงไฟล์ courses.json ได้');
         }
         const data = await response.json();
-        courses = data.course || data;
+        
+        // เช็คโครงสร้างข้อมูลให้แน่ใจว่าดึงจากคีย์ course หรือดึงตัว data ตรงๆ
+        if (Array.isArray(data)) {
+            courses = data;
+        } else if (data.course && Array.isArray(data.course)) {
+            courses = data.course;
+        } else {
+            courses = [];
+        }
+        
     } catch (error) {
         console.warn('เกิดข้อผิดพลาดในการโหลดวิชา:', error);
         courses = [];

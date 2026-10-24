@@ -1,4 +1,4 @@
-let courses = [
+courses = [
   {
     "course_code": "15-02-2002",
     "course_name": "คุณภาพการใช้ชีวิต",
@@ -350,4 +350,3 @@ let courses = [
     "hours": 0,
     "credits": 3
   }
-window.addEventListener('DOMContentLoaded', loadCourses);

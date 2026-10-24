@@ -482,7 +482,25 @@
                 showAuthButtons();
             }
         }
+async function loadCourses() {
+    try {
+        const response = await fetch('file://courses.json');
+        if (!response.ok) {
+            throw new Error('ไม่สามารถโหลดไฟล์ courses.json ได้');
+        }
+        const data = await response.json();
+        courses = data.course || data;
+    } catch (error) {
+        console.warn('ใช้ข้อมูลสำรองเนื่องจากโหลดไฟล์ไม่สำเร็จ:', error);
+        courses = []; // ป้องกันหน้าเว็บพัง
+    } finally {
+        // ไม่ว่าจะโหลดสำเร็จหรือพัง ฟังก์ชันวาดตารางและแดชบอร์ดก็จะทำงานต่อได้ปกติ
+        if (typeof renderTable === 'function') renderTable();
+        if (typeof updateDashboard === 'function') updateDashboard();
+    }
+}
 
+window.addEventListener('DOMContentLoaded', loadCourses);
         function showAppDashboard() {
             document.getElementById('authButtons').classList.add('hidden');
             document.getElementById('userProfileSection').classList.remove('hidden');

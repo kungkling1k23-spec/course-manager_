@@ -350,11 +350,4 @@ let courses = [
     "hours": 0,
     "credits": 3
   }
-];
-
-function loadCourses() {
-    if (typeof renderTable === 'function') renderTable();
-    if (typeof updateDashboard === 'function') updateDashboard();
-}
-
 window.addEventListener('DOMContentLoaded', loadCourses);

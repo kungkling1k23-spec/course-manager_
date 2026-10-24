@@ -490,7 +490,7 @@
         }
 async function loadCourses() {
     try {
-        const response = await fetch('./courses.json');
+        const response = await fetch('./courses.json.json');
         if (!response.ok) {
             throw new Error('ไม่สามารถดึงไฟล์ courses.json ได้');
         }

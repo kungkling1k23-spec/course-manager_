@@ -448,35 +448,7 @@
                 showAuthButtons();
             }
         }
-{
-        async function loadCourses() {
-            try {
-                const response = await fetch('./courses.json');
-                if (!response.ok) {
-                    throw new Error('ไม่สามารถดึงไฟล์ courses.json ได้');
-                }
-                const data = await response.json();
-        
-                // เช็คโครงสร้างข้อมูลให้แน่ใจว่าดึงจากคีย์ course หรือดึงตัว data ตรงๆ
-                if (Array.isArray(data)) {
-                    courses = data;
-                } else if (data.course && Array.isArray(data.course)) {
-                    courses = data.course;
-                } else {
-                    courses = [];
-                }
-        
-            } catch (error) {
-                console.warn('เกิดข้อผิดพลาดในการโหลดวิชา:', error);
-                courses = [];
-            } finally {
-                if (typeof renderTable === 'function') renderTable();
-                if (typeof updateDashboard === 'function') updateDashboard();
-            }
-    }
-    
-    window.addEventListener('DOMContentLoaded', loadCourses);
-    
+{ 
         function showAppDashboard() {
             document.getElementById('authButtons').classList.add('hidden');
             document.getElementById('userProfileSection').classList.remove('hidden');

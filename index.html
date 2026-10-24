@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CourseManager - ระบบจัดการรายวิชา</title>
+    <title>CourseManager - ระบบจัดการรายวิชาและหน่วยกิตอัจฉริยะ</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Font Inter & Prompt for Thai -->
@@ -67,17 +67,44 @@
                     <p class="text-xs text-slate-400 font-light">ระบบจัดการรายวิชาและหน่วยกิตอัจฉริยะ</p>
                 </div>
             </div>
-            <div class="flex items-center gap-2.5 w-full sm:w-auto justify-end flex-wrap">
-                <button onclick="openAddModal()" class="bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white font-medium px-4 py-2.5 rounded-xl shadow-lg shadow-indigo-500/25 transition-all transform active:scale-95 flex items-center gap-2 text-xs sm:text-sm">
-                    <i class="fa-solid fa-plus-circle text-base"></i> เพิ่มรายวิชาใหม่
-                </button>
-                <button onclick="exportData()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3.5 py-2.5 rounded-xl transition text-xs sm:text-sm flex items-center gap-1.5 shadow-sm" title="สำรองข้อมูล JSON">
-                    <i class="fa-solid fa-download text-indigo-400"></i> <span class="hidden md:inline">สำรองข้อมูล</span>
-                </button>
-                <label class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3.5 py-2.5 rounded-xl transition text-xs sm:text-sm flex items-center gap-1.5 cursor-pointer shadow-sm" title="กู้คืนข้อมูล JSON">
-                    <i class="fa-solid fa-upload text-violet-400"></i> <span class="hidden md:inline">กู้คืน</span>
-                    <input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(event)">
-                </label>
+            
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-end flex-wrap">
+                <!-- Logged Out Actions -->
+                <div id="authButtons" class="flex items-center gap-2">
+                    <button onclick="openLoginModal()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-4 py-2.5 rounded-xl transition text-xs sm:text-sm flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-right-to-bracket text-indigo-400"></i> เข้าสู่ระบบ
+                    </button>
+                    <button onclick="openRegisterModal()" class="bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white font-medium px-4 py-2.5 rounded-xl shadow-lg shadow-indigo-500/25 transition-all transform active:scale-95 flex items-center gap-2 text-xs sm:text-sm">
+                        <i class="fa-solid fa-user-plus text-base"></i> สมัครสมาชิก
+                    </button>
+                </div>
+
+                <!-- Logged In Profile & Actions -->
+                <div id="userProfileSection" class="hidden flex items-center gap-3">
+                    <div class="flex items-center gap-2.5 bg-slate-800/80 border border-slate-700/80 px-3.5 py-2 rounded-2xl">
+                        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-500 to-violet-500 text-white flex items-center justify-center font-bold text-xs shadow-md">
+                            <span id="userAvatarText">U</span>
+                        </div>
+                        <div class="text-left">
+                            <span id="userNameDisplay" class="block text-xs font-bold text-white">Username</span>
+                            <span class="block text-[10px] text-emerald-400 font-medium flex items-center gap-1"><i class="fa-solid fa-circle text-[6px]"></i> ออนไลน์</span>
+                        </div>
+                    </div>
+
+                    <button onclick="openAddModal()" class="bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white font-medium px-4 py-2.5 rounded-xl shadow-lg shadow-indigo-500/25 transition-all transform active:scale-95 flex items-center gap-2 text-xs sm:text-sm">
+                        <i class="fa-solid fa-plus-circle text-base"></i> เพิ่มรายวิชา
+                    </button>
+                    <button onclick="exportData()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3.5 py-2.5 rounded-xl transition text-xs sm:text-sm flex items-center gap-1.5 shadow-sm" title="สำรองข้อมูล JSON">
+                        <i class="fa-solid fa-download text-indigo-400"></i> <span class="hidden md:inline">สำรองข้อมูล</span>
+                    </button>
+                    <label class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3.5 py-2.5 rounded-xl transition text-xs sm:text-sm flex items-center gap-1.5 cursor-pointer shadow-sm" title="กู้คืนข้อมูล JSON">
+                        <i class="fa-solid fa-upload text-violet-400"></i> <span class="hidden md:inline">กู้คืน</span>
+                        <input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(event)">
+                    </label>
+                    <button onclick="logout()" class="bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-400 px-3.5 py-2.5 rounded-xl transition text-xs sm:text-sm flex items-center gap-1.5" title="ออกจากระบบ">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -98,7 +125,7 @@
                 <div class="z-10">
                     <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">รายวิชาทั้งหมด</p>
                     <h3 id="statTotalCourses" class="text-3xl font-bold text-slate-800 mt-1">0</h3>
-                    <p class="text-[11px] text-indigo-600 font-medium mt-1 flex items-center gap-1"><i class="fa-solid fa-circle-dot text-[8px]"></i> บันทึกในระบบ</p>
+                    <p class="text-[11px] text-indigo-600 font-medium mt-1 flex items-center gap-1"><i class="fa-solid fa-circle-dot text-[8px]"></i> บันทึกในบัญชีของคุณ</p>
                 </div>
             </div>
 
@@ -178,9 +205,7 @@
                     <i class="fa-solid fa-list-check text-indigo-600"></i> รายการรายวิชา 
                     <span id="courseCountBadge" class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">0 วิชา</span>
                 </h3>
-                <div class="text-xs text-slate-400">
-                    ซิงค์ข้อมูลอัตโนมัติ
-                </div>
+                <div id="welcomeUserHint" class="text-xs text-indigo-600 font-medium"></div>
             </div>
 
             <!-- Course Cards Grid -->
@@ -194,7 +219,7 @@
                     <i class="fa-solid fa-folder-open"></i>
                 </div>
                 <h4 class="text-base font-bold text-slate-700">ไม่พบรายวิชาในระบบ</h4>
-                <p class="text-xs text-slate-400 max-w-sm mt-1">เริ่มต้นเพิ่มรายวิชาแรกของคุณ หรือโหลดข้อมูลตัวอย่างเพื่อทดลองใช้งานทันที</p>
+                <p id="emptyStateDesc" class="text-xs text-slate-400 max-w-sm mt-1">เริ่มต้นเพิ่มรายวิชาแรกของคุณ หรือโหลดข้อมูลตัวอย่างเพื่อทดลองใช้งานทันที</p>
                 <div class="mt-5 flex gap-3">
                     <button onclick="openAddModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-4 py-2 rounded-xl text-xs sm:text-sm transition shadow-md shadow-indigo-500/20">
                         เพิ่มรายวิชาใหม่
@@ -214,6 +239,74 @@
             CourseManager &copy; 2026 - Modern Educational Course & Credit Management System
         </div>
     </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all border border-slate-100" id="loginModalContainer">
+            <div class="bg-gradient-to-r from-indigo-600 to-violet-600 text-white px-6 py-5 flex justify-between items-center shadow-md">
+                <h3 class="font-bold text-base sm:text-lg flex items-center gap-2">
+                    <i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบ CourseManager
+                </h3>
+                <button onclick="closeLoginModal()" class="text-indigo-200 hover:text-white p-1.5 rounded-xl transition hover:bg-white/10">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <form onsubmit="handleLogin(event)" class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">ชื่อผู้ใช้งานหรืออีเมล <span class="text-rose-500">*</span></label>
+                    <input type="text" id="loginUsername" required placeholder="กรอกชื่อผู้ใช้งาน..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition shadow-inner">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">รหัสผ่าน <span class="text-rose-500">*</span></label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition shadow-inner">
+                </div>
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-xl text-xs sm:text-sm transition shadow-md shadow-indigo-500/25 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> เข้าสู่ระบบ
+                    </button>
+                </div>
+                <div class="text-center pt-2 border-t border-slate-100">
+                    <p class="text-xs text-slate-500">ยังไม่มีบัญชีผู้ใช้งาน? <button type="button" onclick="switchToRegister()" class="text-indigo-600 font-semibold hover:underline">สมัครสมาชิกที่นี่</button></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all border border-slate-100" id="registerModalContainer">
+            <div class="bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-6 py-5 flex justify-between items-center shadow-md">
+                <h3 class="font-bold text-base sm:text-lg flex items-center gap-2">
+                    <i class="fa-solid fa-user-plus"></i> สมัครสมาชิกใหม่
+                </h3>
+                <button onclick="closeRegisterModal()" class="text-indigo-200 hover:text-white p-1.5 rounded-xl transition hover:bg-white/10">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <form onsubmit="handleRegister(event)" class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">ชื่อผู้ใช้งาน (Username) <span class="text-rose-500">*</span></label>
+                    <input type="text" id="regUsername" required placeholder="ตั้งชื่อผู้ใช้งาน..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition shadow-inner">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">ชื่อ -นามสกุล (Full Name) <span class="text-rose-500">*</span></label>
+                    <input type="text" id="regFullname" required placeholder="ชื่อและนามสกุลของคุณ..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition shadow-inner">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">รหัสผ่าน (Password) <span class="text-rose-500">*</span></label>
+                    <input type="password" id="regPassword" required placeholder="••••••••" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition shadow-inner">
+                </div>
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-medium py-3 rounded-xl text-xs sm:text-sm transition shadow-md shadow-indigo-500/25 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-user-check"></i> ลงทะเบียน
+                    </button>
+                </div>
+                <div class="text-center pt-2 border-t border-slate-100">
+                    <p class="text-xs text-slate-500">มีบัญชีผู้ใช้งานอยู่แล้ว? <button type="button" onclick="switchToLogin()" class="text-indigo-600 font-semibold hover:underline">เข้าสู่ระบบที่นี่</button></p>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- Add/Edit Course Modal -->
     <div id="courseModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
@@ -277,7 +370,7 @@
                     <input type="number" id="courseHours" required min="1" max="300" step="1" value="45" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition shadow-inner">
                 </div>
 
-                <!-- Description (รายละเอียดวิชา) -->
+                <!-- Description -->
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">รายละเอียดวิชา</label>
                     <textarea id="courseDescription" rows="3" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition resize-none shadow-inner"></textarea>
@@ -333,11 +426,12 @@
     <!-- JavaScript Application Logic -->
     <script>
         // State Management
+        let currentUser = null;
         let courses = [];
         let currentCategoryFilter = 'all';
         let currentPlatformFilter = 'all';
 
-        // Sample Data
+        // Sample Data for new accounts or demo
         const sampleCourses = [
             {
                 id: 'course-1',
@@ -373,15 +467,133 @@
 
         // Initialize on Load
         window.addEventListener('DOMContentLoaded', () => {
-            loadFromLocalStorage();
-            renderCourses();
-            updateStats();
+            checkUserSession();
             renderCategoryFilters();
         });
 
-        // LocalStorage Handlers
-        function loadFromLocalStorage() {
-            const stored = localStorage.getItem('coursemanager_data_v5');
+        // Authentication Handlers
+        function checkUserSession() {
+            const session = localStorage.getItem('coursemanager_current_user');
+            if (session) {
+                try {
+                    currentUser = JSON.parse(session);
+                    showAppDashboard();
+                } catch (e) {
+                    logout();
+                }
+            } else {
+                showAuthButtons();
+            }
+        }
+
+        function showAppDashboard() {
+            document.getElementById('authButtons').classList.add('hidden');
+            document.getElementById('userProfileSection').classList.remove('hidden');
+            document.getElementById('userNameDisplay').innerText = currentUser.fullname || currentUser.username;
+            document.getElementById('userAvatarText').innerText = (currentUser.fullname || currentUser.username).charAt(0).toUpperCase();
+            document.getElementById('welcomeUserHint').innerText = `ยินดีต้อนรับคุณ ${currentUser.fullname || currentUser.username}`;
+            
+            loadUserCourses();
+            renderCourses();
+            updateStats();
+        }
+
+        function showAuthButtons() {
+            document.getElementById('authButtons').classList.remove('hidden');
+            document.getElementById('userProfileSection').classList.add('hidden');
+            document.getElementById('welcomeUserHint').innerText = 'กรุณาเข้าสู่ระบบเพื่อจัดการรายวิชาส่วนตัวของคุณ';
+            courses = [];
+            renderCourses();
+            updateStats();
+        }
+
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.add('hidden');
+        }
+
+        function openRegisterModal() {
+            document.getElementById('registerModal').classList.remove('hidden');
+        }
+
+        function closeRegisterModal() {
+            document.getElementById('registerModal').classList.add('hidden');
+        }
+
+        function switchToRegister() {
+            closeLoginModal();
+            openRegisterModal();
+        }
+
+        function switchToLogin() {
+            closeRegisterModal();
+            openLoginModal();
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            const username = document.getElementById('regUsername').value.trim();
+            const fullname = document.getElementById('regFullname').value.trim();
+            const password = document.getElementById('regPassword').value;
+
+            let users = JSON.parse(localStorage.getItem('coursemanager_users') || '[]');
+            if (users.some(u => u.username === username)) {
+                showMessage('ชื่อผู้ใช้งานซ้ำ', 'ชื่อผู้ใช้งานนี้ถูกใช้งานไปแล้ว กรุณาเลือกชื่ออื่น', 'error');
+                return;
+            }
+
+            const newUser = { username, fullname, password };
+            users.push(newUser);
+            localStorage.setItem('coursemanager_users', JSON.stringify(users));
+
+            // Initialize default courses for new user
+            localStorage.setItem(`coursemanager_data_${username}`, JSON.stringify(sampleCourses));
+
+            closeRegisterModal();
+            showToast('สมัครสมาชิกสำเร็จ กรุณาเข้าสู่ระบบ', 'success');
+            openLoginModal();
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const usernameInput = document.getElementById('loginUsername').value.trim();
+            const passwordInput = document.getElementById('loginPassword').value;
+
+            let users = JSON.parse(localStorage.getItem('coursemanager_users') || '[]');
+            
+            // Allow default guest/demo user if empty
+            let foundUser = users.find(u => u.username === usernameInput && u.password === passwordInput);
+            
+            if (!foundUser && usernameInput === 'admin' && passwordInput === '1234') {
+                foundUser = { username: 'admin', fullname: 'ผู้ดูแลระบบ' };
+            }
+
+            if (foundUser) {
+                currentUser = foundUser;
+                localStorage.setItem('coursemanager_current_user', JSON.stringify(currentUser));
+                closeLoginModal();
+                showToast('เข้าสู่ระบบสำเร็จ', 'success');
+                showAppDashboard();
+            } else {
+                showMessage('เข้าสู่ระบบไม่สำเร็จ', 'ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง', 'error');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('coursemanager_current_user');
+            currentUser = null;
+            showAuthButtons();
+            showToast('ออกจากระบบเรียบร้อยแล้ว', 'info');
+        }
+
+        // Data Storage Handlers per User
+        function loadUserCourses() {
+            if (!currentUser) return;
+            const storageKey = `coursemanager_data_${currentUser.username}`;
+            const stored = localStorage.getItem(storageKey);
             if (stored) {
                 try {
                     courses = JSON.parse(stored);
@@ -395,7 +607,9 @@
         }
 
         function saveToLocalStorage() {
-            localStorage.setItem('coursemanager_data_v5', JSON.stringify(courses));
+            if (!currentUser) return;
+            const storageKey = `coursemanager_data_${currentUser.username}`;
+            localStorage.setItem(storageKey, JSON.stringify(courses));
         }
 
         // Custom Message Box
@@ -427,8 +641,8 @@
         function showToast(message, type = 'success') {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
-            const bgClass = type === 'success' ? 'bg-slate-900 text-white' : 'bg-rose-600 text-white';
-            const icon = type === 'success' ? 'fa-circle-check text-emerald-400' : 'fa-circle-exclamation text-white';
+            const bgClass = type === 'success' ? 'bg-slate-900 text-white' : (type === 'error' ? 'bg-rose-600 text-white' : 'bg-indigo-600 text-white');
+            const icon = type === 'success' ? 'fa-circle-check text-emerald-400' : (type === 'error' ? 'fa-circle-exclamation text-white' : 'fa-circle-info text-white');
             
             toast.className = `${bgClass} px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-xs sm:text-sm pointer-events-auto transform translate-y-2 opacity-0 transition-all duration-300 border border-white/10`;
             toast.innerHTML = `<i class="fa-solid ${icon} text-base"></i><span>${message}</span>`;
@@ -446,6 +660,11 @@
 
         // Modal Controls
         function openAddModal() {
+            if (!currentUser) {
+                openLoginModal();
+                showToast('กรุณาเข้าสู่ระบบก่อนเพิ่มรายวิชา', 'error');
+                return;
+            }
             document.getElementById('modalTitle').innerHTML = `<i class="fa-solid fa-book-medical"></i> เพิ่มรายวิชาใหม่`;
             document.getElementById('courseForm').reset();
             document.getElementById('editIndex').value = '';
@@ -494,6 +713,7 @@
         // Form Submit Handler
         function handleFormSubmit(event) {
             event.preventDefault();
+            if (!currentUser) return;
             
             const editId = document.getElementById('editIndex').value;
             const code = document.getElementById('courseCode').value.trim().toUpperCase();
@@ -573,6 +793,17 @@
         function renderCourses(filteredList = null) {
             const grid = document.getElementById('courseGrid');
             const emptyState = document.getElementById('emptyState');
+            
+            if (!currentUser) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
+                document.getElementById('emptyStateDesc').innerText = 'กรุณาเข้าสู่ระบบเพื่อดูและจัดการรายวิชาของคุณ';
+                document.getElementById('courseCountBadge').innerText = `0 วิชา`;
+                return;
+            }
+
+            document.getElementById('emptyStateDesc').innerText = 'เริ่มต้นเพิ่มรายวิชาแรกของคุณ หรือโหลดข้อมูลตัวอย่างเพื่อทดลองใช้งานทันที';
             const listToRender = filteredList !== null ? filteredList : getFilteredCourses();
 
             document.getElementById('courseCountBadge').innerText = `${listToRender.length} วิชา`;
@@ -716,6 +947,15 @@
 
         // Statistics
         function updateStats() {
+            if (!currentUser) {
+                document.getElementById('statTotalCourses').innerText = '0';
+                document.getElementById('statTotalCredits').innerText = '0';
+                document.getElementById('statTotalHours').innerText = '0';
+                document.getElementById('statThaiMOOC').innerText = '0';
+                document.getElementById('statChulaMOOC').innerText = '0';
+                return;
+            }
+
             const totalCourses = courses.length;
             const totalCredits = courses.reduce((sum, c) => sum + (parseInt(c.credits) || 0), 0);
             const totalHours = courses.reduce((sum, c) => sum + (parseInt(c.hours) || 0), 0);
@@ -730,6 +970,11 @@
         }
 
         function loadSampleData() {
+            if (!currentUser) {
+                openLoginModal();
+                showToast('กรุณาเข้าสู่ระบบก่อนโหลดข้อมูลตัวอย่าง', 'error');
+                return;
+            }
             courses = [...sampleCourses];
             saveToLocalStorage();
             renderCourses();
@@ -739,10 +984,14 @@
 
         // Export/Import JSON Data
         function exportData() {
+            if (!currentUser) {
+                openLoginModal();
+                return;
+            }
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(courses, null, 2));
             const downloadAnchor = document.createElement('a');
             downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", `course_manager_backup_${new Date().toISOString().slice(0,10)}.json`);
+            downloadAnchor.setAttribute("download", `course_manager_${currentUser.username}_${new Date().toISOString().slice(0,10)}.json`);
             document.body.appendChild(downloadAnchor);
             downloadAnchor.click();
             downloadAnchor.remove();
@@ -750,6 +999,10 @@
         }
 
         function importData(event) {
+            if (!currentUser) {
+                openLoginModal();
+                return;
+            }
             const fileReader = new FileReader();
             if (event.target.files[0]) {
                 fileReader.readAsText(event.target.files[0], "UTF-8");

@@ -1,0 +1,354 @@
+{
+"course": [
+	{
+		"course_code" : "15-02-2002",
+		"course_name" : "คุณภาพการใช้ชีวิต",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. ชีวิตและการสร้างคุณค่า (2 ชม.)\n2. การคิดสร้างสรรค์ เพื่อการพัฒนาตนเอง (5 ชม.)",
+		"hours" : 7,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-02-2003",
+		"course_name" : "การคิดอย่างมีวิจารณญาณและการแก้ปัญหา",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. การคิดเชิงวิพากษ์และการจัดการปัญหา (5 ชม.)\n2. การคิดแก้ปัญหาเชิงสร้างสรรค์ (6 ชม.)",
+		"hours" : 11,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-02-2004",
+		"course_name" : "คุณธรรมจริยธรรมในโลกเทคโนโลยีสารสนเทศ",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "จริยธรรมสารสนเทศสำหรับพลเมืองดิจิทัล",
+		"hours" : 7,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2005",
+		"course_name" : "ผู้ประกอบการนวัตกรรม",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "การเป็นผู้ประกอบการในศตวรรษที่ 21",
+		"hours" : 30,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2006",
+		"course_name" : "การจัดการเศรษฐกิจชีวภาพ เศรษฐกิจหมุนเวียน และเศรษฐกิจสีเขียว",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. ชุมชนแห่งความยั่งยืน (2 ชม.)\n2. หลักเศรษฐศาสตร์เกษตร (6 ชม.)",
+		"hours" : 8,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2007",
+		"course_name" : "เทคโนโลยีสารสนเทศในยุคดิจิทัล",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "เทคโนโลยีสารสนเทศในยุคดิจิทัล",
+		"hours" : 10,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2008",
+		"course_name" : "คณิตศาสตร์และสถิติเพื่อการประกอบอาชีพ",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "สถิติธุรกิจ (สถิติเรื่องใกล้ตัว…ไม่น่ากลัวอย่างที่คิด)",
+		"hours" : 10,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2009",
+		"course_name" : "ภูมิปัญญาเพื่อการประกอบอาชีพ",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "ภูมิปัญญาไทย กับการพัฒนาการเกษตรอย่างยั่งยืน",
+		"hours" : 10,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2010",
+		"course_name" : "การวิเคราะห์และนำเสนอข้อมูลด้วยเทคโนโลยีดิจิทัล",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. การออกแบบการนําเสนองานอย่างสร้างสรรค์ และทันสมัย (10 ชม.)\n2. คอมพิวเตอร์เพื่อการพูดและการนําเสนอ (6 ชม.)",
+		"hours" : 16,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2011",
+		"course_name" : "ผู้ประกอบการดิจิทัล",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "การตลาดดิจิทัลสําหรับผู้ประกอบการธุรกิจชุมชน",
+		"hours" : 5,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2014",
+		"course_name" : "การพัฒนาศักยภาพเพื่อมุ่งสู่การเป็นผู้ประกอบการมือใหม่",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "การเริ่มต้นเป็นผู้ประกอบการรายใหม่ (A new entrepreneur)",
+		"hours" : 30,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2015",
+		"course_name" : "ศาสตร์แห่งการสื่อสาร",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. ทักษะการสื่อสารระหว่างบุคคลในการทำงาน (10 ชม.)\n2. การสื่อสารและการประสานงาน (5 ชม.)",
+		"hours" : 15,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2016",
+		"course_name" : "ภาษาอังกฤษเพื่อการสื่อสาร",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. ภาษาอังกฤษเพื่อการสื่อสาร (10 ชม.)\n2. ภาษาอังกฤษเพื่อการสื่อสารในสังคม (4 ชม.)",
+		"hours" : 14,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2018",
+		"course_name" : "การใช้ภาษาไทยในชีวิตประจำวัน",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. การใช้ภาษาไทย หรือ ภาษาไทยเพื่อการสื่อสารร่วมสมัย",
+		"hours" : 10,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2019",
+		"course_name" : "ทักษะภาษาอังกฤษสำหรับผู้ประกอบการออนไลน์",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "ง่ายสบายกับการอธิบายกราฟเป็นภาษาอังกฤษ",
+		"hours" : 10,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2020",
+		"course_name" : "ทักษะการเรียนภาษาอังกฤษผ่านสื่ออิเล็กทรอนิกส์",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "ภาษาอังกฤษสำหรับเทคโนโลยีสารสนเทศ",
+		"hours" : 10,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-03-2021",
+		"course_name" : "เทคนิคการพูดเพื่อความสำเร็จ",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "รู้รอบด้านการนำเสนอ",
+		"hours" : 5,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-05-2024",
+		"course_name" : "ทักษะชีวิต",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "ทักษะทางสังคม",
+		"hours" : 10,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-06-2027",
+		"course_name" : "ความเป็นพลเมืองไทยและพลเมืองโลก",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. ความเป็นพลเมืองโลก (3 ชม.)\n2. การเป็นพลเมือง (10 ชม.)",
+		"hours" : 13,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-02-2028",
+		"course_name" : "วิถีโลก",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "กลยุทธ์สู่ประชาคมอาเซียน: การเมือง เศรษฐกิจ และสังคม",
+		"hours" : 8,
+		"credits" : 3
+	},
+	{
+		"course_code" : "15-02-2029",
+		"course_name" : "สังคมและวัฒนธรรมไทย",
+		"category" : "หมวดวิชาศึกษาทั่วไป",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "อารยธรรมและภูมิปัญญาท้องถิ่น",
+		"hours" : 1,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-00-101",
+		"course_name" : "หลักการตลาด",
+		"category" : "หมวดวิชาแกน",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. การจัดการเชิงกลยุทธ์และการตลาดในยุคโลกาภิวัตน์ (10 ชม.)\n2. การตลาดเชิงสร้างสรรค์ (6 ชม.)",
+		"hours" : 16,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-00-102",
+		"course_name" : "หลักเศรษฐศาสตร์ (Principles of Economics)",
+		"category" : "หมวดวิชาแกน",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "เศรษฐศาสตร์ตลาดการเงิน",
+		"hours" : 10,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-00-103",
+		"course_name" : "องค์การและการจัดการ",
+		"category" : "หมวดวิชาแกน",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. การบริหารจัดการในศตวรรษที่ 21 (6 ชม.)\n2. การจัดการธุรกิจการค้าสมัยใหม่ในยุค Thailand 4.0 (6 ชม.)",
+		"hours" : 12,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-00-105",
+		"course_name" : "สถิติเพื่อการวิจัยธุรกิจ",
+		"category" : "หมวดวิชาแกน",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. สถิติและการวิเคราะห์ข้อมูลเบื้องต้น (4 ชม.)\n2. วิจัยทางธุรกิจ (6 ชม.)",
+		"hours" : 10,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-00-106",
+		"course_name" : "ภาษาอังกฤษเพื่อการสื่อสารธุรกิจ",
+		"category" : "หมวดวิชาแกน",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "สตาร์ทอัพอังกฤษ",
+		"hours" : 30,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-00-107",
+		"course_name" : "การบัญชีเบื้องต้นเพื่อการบริหาร",
+		"category" : "หมวดวิชาแกน",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. บัญชีเบื้องต้น (5 ชม.)\n2. การบัญชีบริหาร (10 ชม.)",
+		"hours" : 15,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-00-108",
+		"course_name" : "การเงินธุรกิจ",
+		"category" : "หมวดวิชาแกน",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. การบัญชีเพื่อการจัดการและการจัดการทางการเงิน (10 ชม.)\n2. การเงินสำหรับการเริ่มต้นธุรกิจ (SET) (1 ชม.)",
+		"hours" : 11,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-00-109",
+		"course_name" : "การจัดการโลจิสติกส์และห่วงโซ่อุปทาน",
+		"category" : "หมวดวิชาแกน",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. โลจิสติกส์และโซ่อุปทานเบื้องต้น (10 ชม.)\n2. การจัดการคลังสินค้า (10 ชม.)",
+		"hours" : 20,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-00-110",
+		"course_name" : "ทักษะความเข้าใจและการใช้เทคโนโลยีดิจิทัล",
+		"category" : "หมวดวิชาแกน",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. การเข้าใจดิจิทัล (15 ชม.)\n2. ทักษะความเข้าใจ การใช้เทคโนโลยีดิจิทัลและความมั่นคงปลอดภัยทางไซเบอร์ (4 ชม.)",
+		"hours" : 19,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-05-0232",
+		"course_name" : "การคิดเชิงออกแบบสำหรับนวัตกรรมทางธุรกิจ",
+		"category" : "หมวดวิชาเลือก",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "ปฏิบัติการคิดเชิงออกแบบนวัตกรรม",
+		"hours" : 12,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-05-0233",
+		"course_name" : "ธุรกิจดิจิทัลผ่านสื่อสังคมออนไลน์",
+		"category" : "หมวดวิชาเลือก",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. มาตรฐานการผลิตสื่อดิจิทัล (5 ชม.)\n2. การสร้างสรรค์สื่อดิจิทัลบนเครือข่ายสังคมออนไลน์ (5 ชม.)",
+		"hours" : 10,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-05-0234",
+		"course_name" : "เครือข่ายคอมพิวเตอร์และความปลอดภัยสำหรับธุรกิจดิจิทัล",
+		"category" : "หมวดวิชาเลือก",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "เครือข่ายและความปลอดภัย",
+		"hours" : 5,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-05-0141",
+		"course_name" : "วิทยาการสารสนเทศทางธุรกิจ",
+		"category" : "หมวดวิชาเลือก",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. วิทยาการข้อมูลเบื้องต้น (6 ชม.)\n2. วิทยาการข้อมูลและการประยุกต์ใช้ (30 ชม.)",
+		"hours" : 36,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-05-0241",
+		"course_name" : "การวิเคราะห์ข้อมูลทางธุรกิจ",
+		"category" : "หมวดวิชาเลือก",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. การเตรียมข้อมูล (12 ชม.)\n2. การวิเคราะห์ข้อมูลสำหรับการจัดการทางธุรกิจ (3 ชม.)",
+		"hours" : 15,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-05-0342",
+		"course_name" : "ระบบสนับสนุนการตัดสินใจ",
+		"category" : "หมวดวิชาเลือก",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. ระบบสนับสนุนการตัดสินใจสำหรับองค์กรธุรกิจ (6 ชม.)\n2. การตัดสินใจโดยการขับเคลื่อนด้วยข้อมูล (4 ชม.)",
+		"hours" : 10,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-05-0441",
+		"course_name" : "ความคิดสร้างสรรค์และนวัตกรรมในการวิเคราะห์ข้อมูล",
+		"category" : "หมวดวิชาเลือก",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. การสร้างสรรค์เนื้อหาด้วยข้อมูล (Data) เพื่อเพิ่มคุณค่าขององค์กร (4 ชม.)\n2. การตัดสินใจโดยการขับเคลื่อนด้วยข้อมูล (4 ชม.)",
+		"hours" : 8,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-05-0443",
+		"course_name" : "การบริหารโครงการระบบสารสนเทศ",
+		"category" : "หมวดวิชาเลือก",
+		"institution" : "ThaiMOOC",
+		"online_lesson" : "1. การวิเคราะห์โครงการและแผนงานในยุคเศรษฐกิจดิจิทัล (15 ชม.)\n2. การบริหารโครงการ IT แบบมืออาชีพ (3 ชม.)",
+		"hours" : 18,
+		"credits" : 3
+	},
+	{
+		"course_code" : "04-00-104",
+		"course_name" : "กฎหมายธุรกิจและการภาษีอากร",
+		"category" : "หมวดวิชาแกน",
+		"institution" : "ChulaMOOC",
+		"online_lesson" : "1. กฎหมายกับธุรกิจ Law for Business: กฎหมายกับธุรกิจยุค Thailand 4.0 และภาษีกับธุรกิจ\n2. กฎหมายกับธุรกิจ Law for Business: กฎหมายพื้นฐาน​สำหรับธุรกิจ",
+		"hours" : null,
+		"credits" : 3
+	}
+]}
